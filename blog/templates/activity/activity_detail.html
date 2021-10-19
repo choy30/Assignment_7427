@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}
+    Activity Details
+{% endblock %}
+{% block content %}
+    <h1>{{ activity.name }}</h1>
+    <div>Created by: {{ activity.owner }}<br>Date: {{ activity.date }}
+        <br>Description: {{ activity.description }}<br>Location: {{ activity.location }}</div>
+    {% if user.is_authenticated %}
+        {% if user.id == activity.owner.id %}
+            <a href="{% url 'update-activity' activity.pk %}" class="btn btn-secondary">Update details</a>
+            <a href="{% url 'delete-activity' activity.pk %}" class="btn btn-secondary">Delete activity</a>
+        {% endif %}
+    {% endif %}<br><br>
+
+{% endblock %}

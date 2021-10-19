@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}
+    Dog Details
+{% endblock %}
+{% block content %}
+    <h1>{{ dog.name }}</h1>
+    <div>Owner: {{ dog.owner }}<br>Weight: {{ dog.weight }}
+        <br>Date of Birth: {{ dog.dob }}<br>Description: {{ dog.description }}</div>
+    {% if user.is_authenticated %}
+        {% if user.id == dog.owner.id %}
+            <a href="{% url 'update-dog' dog.pk %}" class="btn btn-secondary">Update details</a>
+            <a href="{% url 'delete-dog' dog.pk %}" class="btn btn-secondary">Delete Dog</a>
+        {% endif %}
+    {% endif %}<br><br>
+    <a href="{% url 'home' %}" class="btn btn-secondary">Back</a><br><br>
+
+{% endblock %}
