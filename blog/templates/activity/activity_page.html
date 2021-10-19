@@ -3,7 +3,6 @@
     Dog Details
 {% endblock %}
 {% block content %}
-    <a href="{% url 'create-activity' %}" class="btn btn-secondary">Create New Activity</a>
     <h1>Activity</h1>
     {% for activity in object_list %}
         <div class="card" style="width: 40rem;margin-bottom: 1rem;">

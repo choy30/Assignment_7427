@@ -40,6 +40,7 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               {% if user.is_authenticated %}
                   <li><a href="{% url 'add-dog' %}" class="dropdown-item">Add Dog</a></li>
+                  <li><a href="{% url 'create-activity' %}" class="dropdown-item">Create New Activity</a></li>
                 <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
               {% else %}
                 <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
