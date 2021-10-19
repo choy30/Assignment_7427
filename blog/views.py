@@ -44,4 +44,4 @@ class UpdateActivity(UpdateView):
 class DeleteActivity(DeleteView):
     model = Activity
     template_name = 'activity/delete_activity.html'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('activity')

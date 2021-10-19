@@ -24,4 +24,4 @@ class Activity(models.Model):
     location = models.TextField()
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     def get_absolute_url(self):
-        return reverse('home')
+        return reverse('activity')
