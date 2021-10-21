@@ -1,28 +1,31 @@
 from django import forms
 
-from blog.models import Dog, Activity
+from blog.models import Dog, Activity, Breed
 
+breedChoices = Breed.objects.all().values_list('name', 'name')
 
 class DogForm(forms.ModelForm):
     class Meta:
         model = Dog
-        fields = ('name', 'weight', 'dob', 'image','description', 'owner')
+        fields = ('name', 'weight', 'dob', 'image','description', 'owner', 'breed')
         widgets = {
             'name': forms.TextInput(attrs={'class':'form-control'}),
             'weight': forms.NumberInput(attrs={'class':'form-control'}),
             'dob': forms.DateInput(attrs={'class':'form-control'}),
             'image': forms.ClearableFileInput(attrs={'class':'form-control'}),
             'description': forms.Textarea(attrs={'class':'form-control'}),
-            'owner': forms.Select(attrs={'class':'form-control'}),
+            'owner': forms.TextInput(attrs={'class':'form-control', 'value':'', 'id':'input', 'type':'hidden'}),
+            'breed': forms.Select(choices=breedChoices, attrs={'class': 'form-control'}),
         }
 class UpdateDogForm(forms.ModelForm):
     class Meta:
         model = Dog
-        fields = ('weight', 'image', 'description')
+        fields = ('weight', 'image', 'description', 'breed')
         widgets = {
             'weight': forms.NumberInput(attrs={'class':'form-control'}),
             'image': forms.ClearableFileInput(attrs={'class': 'form-control'}),
             'description': forms.Textarea(attrs={'class':'form-control'}),
+            'breed': forms.Select(choices=breedChoices, attrs={'class': 'form-control'}),
         }
 
 class ActivityForm(forms.ModelForm):
@@ -34,7 +37,7 @@ class ActivityForm(forms.ModelForm):
             'date': forms.DateInput(attrs={'class':'form-control'}),
             'description': forms.Textarea(attrs={'class':'form-control'}),
             'location': forms.Textarea(attrs={'class':'form-control'}),
-            'owner': forms.Select(attrs={'class':'form-control'}),
+            'owner': forms.TextInput(attrs={'class':'form-control', 'value':'', 'id':'input', 'type':'hidden'}),
         }
 class UpdateActivityForm(forms.ModelForm):
     class Meta:

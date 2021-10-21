@@ -4,7 +4,7 @@ from django.conf.urls.static import static
 from django.urls import path
 
 from blog.views import HomePage, DogDetail, AddDog, UpdateDog, DeleteDog, ActivityDetail, CreateActivity, \
-    UpdateActivity, DeleteActivity, ActivityPage
+    UpdateActivity, DeleteActivity, ActivityPage, AddBreed, UpdateBreed, DeleteBreed, BreedDetail
 
 urlpatterns = [
     path('', HomePage.as_view(), name="home"),
@@ -12,6 +12,10 @@ urlpatterns = [
     path('add_dog/', AddDog.as_view(), name='add-dog'),
     path('dog/update/<int:pk>', UpdateDog.as_view(), name='update-dog'),
     path('dog/delete/<int:pk>', DeleteDog.as_view(), name='delete-dog'),
+    path('breed/', BreedDetail.as_view(), name="breed-detail"),
+    path('add_breed', AddBreed.as_view(), name='add-breed'),
+    path('breed/update/<int:pk>', UpdateBreed.as_view(), name='update-breed'),
+    path('breed/delete/<int:pk>', DeleteBreed.as_view(), name='delete-breed'),
     path('activity', ActivityPage.as_view(), name='activity'),
     path('activity/<int:pk>', ActivityDetail.as_view(), name='activity-detail'),
     path('create_activity/', CreateActivity.as_view(), name='create-activity'),

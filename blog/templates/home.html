@@ -10,6 +10,7 @@
             <img class="card-img-top" src="{{ dog.image.url }}" style="width: 15rem; height: 10rem">
             <div class="card-body">
                 <h3>{{ dog.name }}</h3>
+                {{ dog.breed }}<br>
                 <a href="{% url 'dog-detail' dog.pk%}">Details</a>
             </div>
         </div>

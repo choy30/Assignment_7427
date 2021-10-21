@@ -48,6 +48,13 @@
               {% endif %}
           </ul>
         </li>
+          {% if user.is_authenticated %}
+                {% if user.id == 1 %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'breed-detail' %}">Breed</a>
+              </li>
+                {% endif %}
+          {% endif %}
       </ul>
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

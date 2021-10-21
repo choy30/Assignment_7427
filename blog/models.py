@@ -4,6 +4,12 @@ from django.db import models
 # Create your models here.
 from django.urls import reverse
 
+class Breed(models.Model):
+    name = models.CharField(max_length=150)
+    def __str__(self):
+        return self.name
+    def get_absolute_url(self):
+        return reverse('breed-detail')
 
 class Dog(models.Model):
     name = models.CharField(max_length=100)
@@ -12,6 +18,7 @@ class Dog(models.Model):
     image = models.ImageField(null=True, blank=True, upload_to="images/")
     description = models.TextField()
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    breed = models.CharField(max_length=150, default='Unknown')
     def __str__(self):
         return self.name + ' : ' + str(self.owner)
     def get_absolute_url(self):

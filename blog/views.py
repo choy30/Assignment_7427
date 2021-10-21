@@ -5,7 +5,7 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from blog.forms import DogForm, UpdateDogForm, ActivityForm, UpdateActivityForm
-from blog.models import Dog, Activity
+from blog.models import Dog, Activity, Breed
 
 
 class HomePage(ListView):
@@ -25,6 +25,21 @@ class UpdateDog(UpdateView):
 class DeleteDog(DeleteView):
     model = Dog
     template_name = 'delete_dog.html'
+    success_url = reverse_lazy('home')
+class BreedDetail(ListView):
+    model = Breed
+    template_name = 'breed/breed_details.html'
+class AddBreed(CreateView):
+    model = Breed
+    template_name = 'breed/add_breed.html'
+    fields = ['name']
+class UpdateBreed(UpdateView):
+    model = Breed
+    template_name = 'breed/update_breed.html'
+    fields = '__all__'
+class DeleteBreed(DeleteView):
+    model = Breed
+    template_name = 'breed/delete_breed.html'
     success_url = reverse_lazy('home')
 
 class ActivityPage(ListView):

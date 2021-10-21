@@ -10,4 +10,10 @@
         <button class="btn btn-secondary">Create</button>
     <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
     </form>
+    <script>
+        window.onload = function(){
+            var dogOwner = "{{ user.id }}";
+            document.getElementById('input').value = dogOwner;
+        }
+    </script>
 {% endblock %}

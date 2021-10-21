@@ -5,7 +5,7 @@
 {% block content %}
     <h1>{{ dog.name }}</h1>
     <img src="{{ dog.image.url }}" style="width: 20%; height: 20%">
-    <div>Owner: {{ dog.owner }}<br>Weight: {{ dog.weight }}
+    <div>Owner: {{ dog.owner }}<br>Breed: {{ dog.breed }}<br>Weight: {{ dog.weight }}
         <br>Date of Birth: {{ dog.dob }}<br>Description: {{ dog.description }}</div>
     {% if user.is_authenticated %}
         {% if user.id == dog.owner.id %}
